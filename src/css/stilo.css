@@ -1,0 +1,76 @@
+﻿#topo .span12 {
+background-image: url(../img/fundo_topo.png);
+background-repeat: repeat-x;
+height:58px;
+
+}
+
+#topo .span12 figure {
+margin:0;
+padding:0;
+}
+
+#rodape .span12 {
+background-image: url(../img/fundo_rodape.png);
+background-repeat: repeat-x;
+color:#FFFFFF;
+height: 34px;
+
+}
+
+#conteudo {
+	height: 700px;
+
+
+}
+
+.bordas {
+
+	border-left:1px  solid #CCCCCC;
+	border-bottom:1px  solid #CCCCCC;
+	border-right:1px  solid #CCCCCC;
+}
+
+
+.titulo{
+
+background-color: #326d94 ;
+color:#FFFFFF;
+height: 25px;
+
+}
+
+.titulo p {
+	margin-left: 5px;
+	}
+.altura {
+
+	height: 675px;
+	margin-bottom: 20px;
+	overflow: auto;
+}
+.login {
+
+	margin-top: 60px;
+	box-shadow: 5px 5px 5px rgba(0,0,0,0.5);
+
+}
+
+.login legend {
+
+	background-color: #3B5998;
+	color: #ffffff;
+}
+
+.verde {
+
+	background-color:#428463; 
+}
+.azul {
+
+	background-color: #4479ba;
+}
+.vermelho {
+
+	background-color: #c65123;
+}
