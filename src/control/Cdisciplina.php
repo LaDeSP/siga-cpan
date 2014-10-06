@@ -9,6 +9,8 @@ class Cdisciplina {
         $curso = $dados;
         $consulta = new Matriz();
         $matriz = $consulta->selecionaidmatriz($dados); 
+        $con = new Disciplina();
+        $disciplina = $con->listadisciplina($matriz['id']);
         include_once 'view/CadastrarDisciplina.php';
         
     }
@@ -34,6 +36,10 @@ class Cdisciplina {
         $idcurso = $consulta->selecionacursomatriz($idMatriz);
         $curso = $idcurso['mat_curso'];
         $matriz['id'] = $idMatriz;
+        $con = new Disciplina();
+        $disciplina = $con->listadisciplina($matriz['id']);
         include_once 'view/CadastrarDisciplina.php';
     }
+    
+  
 }

@@ -3,7 +3,7 @@
 include_once 'banco/Crud.php';
 class Curso extends Crud {
     
-    protected   $table = curso;
+    protected   $table = "curso";
     private     $nome;
     private     $codigo;
     private     $qtdSemestre;
@@ -62,5 +62,31 @@ class Curso extends Crud {
         return $stmt->execute();
         
     }
-
+    
+    public function selecionacoordenador($id) {
+        $sql = "SELECT * FROM usuario_vs_curso INNER JOIN usuario ON usuario_vs_curso.uvc_id_usuario = usuario.id AND usuario_vs_curso.uvc_id_curso = :id";
+        $stmt = Db::prepare($sql);
+        $stmt->bindParam(':id', $id);
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_CLASS);
+        
+    }
+    
+    public function atualizacoordenador($id) {
+        $sql = "UPDATE $this->table SET cur_coordenador = :coordenador WHERE id = :id";
+        $stmt = Db::prepare($sql);
+        $stmt->bindParam(':coordenador', $this->coordenador);
+        $stmt->bindParam(':id', $id);
+        return $stmt->execute();
+    }
+    
+    public function buscacurso() {
+        $sql = "SELECT curso.cur_codigo, curso.cur_nome, usuario.usu_nome, curso.id  FROM curso INNER JOIN usuario ON usuario.id = curso.cur_coordenador";
+        $stmt = Db::prepare($sql);
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_CLASS);
+        
+        
+    }
+    
 }

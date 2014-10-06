@@ -25,23 +25,14 @@
             <div class="row-fluid">
                     <div id="conteudo">
                             <div class="span12">
-                                <form id="curso" class="form-horizontal" method="POST" action="index.php?pg=AtualizarCurso">
+                                <form id="curso" class="form-horizontal" method="POST" action="index.php?pg=AtualizarCoordenador">
                                         <fieldset>
-
-                                        <!-- Text input-->
-                                        <div class="control-group">
-                                          <label class="control-label" for="codigo_curso">Codigo Curso</label>
-                                          <div class="controls">
-                                              <input id="codigo_curso" name="codigo_curso" value="<?php echo "$valor->cur_codigo";?>" placeholder="Codigo Curso" class="input-large" required="" type="text">
-                                            
-                                          </div>
-                                        </div>
 
                                         <!-- Text input-->
                                         <div class="control-group">
                                           <label class="control-label" for="nome_curso">Curso</label>
                                           <div class="controls">
-                                            <input id="nome_curso" name="nome_curso" placeholder="Nome do Curso" class="input-large" value="<?php echo $valor->cur_nome; ?>" required="" type="text">
+                                            <input id="nome_curso" name="nome_curso" placeholder="Nome do Curso" readonly="true" class="input-large" value="<?php echo $coor->cur_nome; ?>" required="" type="text">
                                             
                                           </div>
                                         </div>
@@ -49,28 +40,20 @@
                                         <!-- Text input-->
                                         <div class="control-group">
                                            <div class="controls">
-                                            <input id="id" name="id" class="input-large" type="hidden" value="<?php echo $valor->id; ?>">
+                                            <input id="id" name="id" class="input-large" type="hidden"  value="<?php echo $coor->id; ?>">
                                            </div>
                                         </div>
 
 
                                         <!-- Select Basic -->
                                         <div class="control-group">
-                                          <label class="control-label" for="qtd_semestre">Quantidade de Semestres</label>
+                                          <label class="control-label" for="coordenador">Coordenador</label>
                                           <div class="controls">
-                                            <select id="qtd_semestre" name="qtd_semestre" class="input-mini">
-
-                                              <option value="<?php echo $valor->cur_qtd_semestre ?>"><?php echo $valor->cur_qtd_semestre ?></option>
-                                              <option value="1">1</option>
-                                              <option value="2">2</option>
-                                              <option value="3">3</option>
-                                              <option value="4">4</option>
-                                              <option value="5">5</option>
-                                              <option value="6">6</option>
-                                              <option value="7">7</option>
-                                              <option value="8">8</option>
-                                              <option value="9">9</option>
-                                              <option value="10">10</option>
+                                            <select id="coordenador" name="coordenador" class="input-mini">
+                                              <?php foreach ($valor as $va) {
+                                                echo '<option value="'.$va->id.'">'.$va->usu_nome.'</option>';
+                                                 } ?>
+                                              
 
                                             </select>
                                           </div>

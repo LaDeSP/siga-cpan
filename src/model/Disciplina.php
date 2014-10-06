@@ -4,7 +4,7 @@ include_once 'banco/Crud.php';
 
 class Disciplina extends Crud {
     
-    protected $table = disciplina;
+    protected $table = "disciplina";
     private $semestre;
     private $codigo;
     private $nome;
@@ -103,6 +103,14 @@ class Disciplina extends Crud {
 
     public function update($id) {
         
+    }
+    
+    public function listadisciplina($id) {
+        $sql = "SELECT * FROM $this->table WHERE dis_id_mat = :idMatriz ORDER BY dis_semestre";
+        $stmt = Db::prepare($sql);
+        $stmt->bindParam(':idMatriz', $id);
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_CLASS);
     }
 
 }

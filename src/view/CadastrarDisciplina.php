@@ -125,7 +125,26 @@
 
                                 </fieldset>
                                 </form>
-
+                                <table class="table">
+                                    <tr>
+                                        <th>Semestre</th>
+                                        <th>Codigo</th>
+                                        <th>Nome</th>
+                                        <th>Tipo</th>
+                                    </tr>
+                                    <?php
+                                     foreach ($disciplina as $dis) {
+                                        echo '
+                                    <tr>
+                                        <td>'.$dis->dis_semestre.'</td>
+                                        <td>'.$dis->dis_codigo.'</td>
+                                        <td>'.$dis->dis_nome.'</td>
+                                        <td>'.$dis->dis_tipo.'</td>
+                                    </tr>';
+                                     }
+                                    ?>
+                                    
+                                </table>
                                     
                             </div>
                     </div>

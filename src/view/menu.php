@@ -38,8 +38,7 @@
                             <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">Curso<b class="caret"></b></a>
                             <ul class="dropdown-menu">
-                                <li><a href="?pg=CadastrarCurso">Cadastrar</a></li>
-                                <li><a href="?pg=listar_curso">Editar/Excluir</a></li> 
+                                <li><a href="?pg=CadastrarCurso">Cadastrar/Editar</a></li>     
                             </ul>
                             </li>
 
@@ -54,7 +53,7 @@
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">Usuario<b class="caret"></b></a>
                                 <ul class="dropdown-menu">
-                                  <li><a href="?pg=cad_usuario">Cadastrar</a></li>
+                                  <li><a href="?pg=CadastrarUsuario">Cadastrar</a></li>
                                 </ul>
                             </li>
 
@@ -69,7 +68,7 @@
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">Coordenação<b class="caret"></b></a>
                                 <ul class="dropdown-menu">
-                                   <li><a href="?pg=lst_coordenacao">Atualizar Coordenação</a></li>
+                                   <li><a href="?pg=ListarCurso">Atualizar Coordenação</a></li>
                                 </ul>
                             </li>    
 

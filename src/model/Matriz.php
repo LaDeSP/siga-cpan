@@ -1,12 +1,22 @@
 <?php
 include_once 'banco/Crud.php';
 class Matriz extends Crud {
-    protected $table = matriz;
+    protected $table = "matriz";
     private $numero;
     private $curso;
     private $ano;
+    private $status;
     
-    public function getNumero() {
+
+    public function getStatus() {
+        return $this->status;
+    }
+
+    public function setStatus($status) {
+        $this->status = $status;
+    }
+
+        public function getNumero() {
         return $this->numero;
     }
 
@@ -40,7 +50,14 @@ class Matriz extends Crud {
     }
 
     public function update($id) {
-        
+        $sql = "UPDATE $this->table SET mat_numero = :numero, mat_curso = :curso, mat_ano = :ano, mat_status = :status WHERE id = :id";
+        $stmt = Db::prepare($sql);
+        $stmt->bindParam(':numero', $this->numero);
+        $stmt->bindParam(':curso', $this->curso);
+        $stmt->bindParam(':ano', $this->ano);
+        $stmt->bindParam(':status', $this->status);
+        $stmt->bindParam(':id', $id);
+        return $stmt->execute();
     }
     
     public function selecionamatriz($dados){

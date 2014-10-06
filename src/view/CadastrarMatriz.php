@@ -25,7 +25,7 @@
             <div class="row-fluid">
                     <div id="conteudo">
                             <div class="span12">
-                                <form class="form-horizontal" method="post" action="index.php?pg=InserirMatriz">
+                                <form id="matriz" class="form-horizontal" method="post" action="index.php?pg=InserirMatriz">
                                 <fieldset>
 
                                 <!-- Text input-->
@@ -33,15 +33,15 @@
                                   <label class="control-label" for="numero">Numero da Matriz</label>
                                   <div class="controls">
                                     <input id="numero" name="numero" placeholder="Numero" class="input-large" type="text">
-                                    <p class="help-block">Digite o numero da matriz</p>
+                                   
                                   </div>
                                 </div>                      
                                 <!-- Text input-->
                                 <div class="control-group">
                                   <label class="control-label" for="ano">Ano de Aprovação</label>
                                   <div class="controls">
-                                    <input id="ano" name="ano" placeholder="" class="input-large" required="" type="text">
-                                    <p class="help-block">Digite o Ano</p>
+                                    <input id="ano" name="ano" placeholder="" class="input-large"  type="text">
+                                    
                                   </div>
                                 </div>
 
@@ -73,7 +73,7 @@
                                         <th>Disciplina</th>
                                         <?php
                                          foreach ($matrizes as $ma){
-                                             echo '<tr><td>'.$ma->mat_numero.'</td><td>'.$ma->mat_ano.'</td><td>'.$ma->mat_status.'</td><td><a href=index.php?pg=AlterarMatriz&&id='.$ma->id.'>Editar</a></td><td><a href=index.php?pg=ContinuarCadastrarDisciplina&&id='.$ma->id.'>Inserir</a></td></tr>';
+                                             echo '<tr><td>'.$ma->mat_numero.'</td><td>'.$ma->mat_ano.'</td><td>'.$ma->mat_status.'</td><td><a href=index.php?pg=AlterarMatriz&id='.$ma->id.'>Editar</a></td><td><a href=index.php?pg=ContinuarCadastrarDisciplina&id='.$ma->id.'>Inserir</a></td></tr>';
                                          
                                              
                                          }
@@ -99,6 +99,8 @@
 
     <script type="text/javascript" src="js/jquery-1.10.2.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="js/jquery.validate.js"></script>
+    <script type="text/javascript" src="js/validaformmatriz.js"></script>
 
   </body>
 </html>

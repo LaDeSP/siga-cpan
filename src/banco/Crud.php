@@ -13,7 +13,7 @@ abstract class Crud extends Db {
         $stmt = Db::prepare($sql);
         $stmt->bindParam(':id', $id, PDO::PARAM_INT);
         $stmt->execute();
-        return $stmt->fetch(PDO::FETCH_CLASS);
+        return $stmt->fetch();
     }
     
     public function findAll(){
@@ -29,4 +29,7 @@ abstract class Crud extends Db {
         $stmt->bindParam(':id', $id, PDO::PARAM_INT);
         return $stmt->execute();
     }
+    
+
+    
 }

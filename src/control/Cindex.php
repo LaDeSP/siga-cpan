@@ -2,6 +2,7 @@
 
 include_once 'control/Ccurso.php';
 include_once 'control/Cmatriz.php';
+include_once 'control/Cusuario.php';
 
 class Cindex {
     function paginas($pg,$dados=array(),$id) {
@@ -22,6 +23,11 @@ class Cindex {
         $pagina->alterarcurso($id);    
 	break;
     
+        case 'AtualizarCurso':
+        $pagina = new Ccurso();
+        $pagina->atualizacurso($dados);    
+	break;
+    
         case 'SelecionaCurso':
         $pagina = new Ccurso();
         $pagina->selecionacurso();    
@@ -35,6 +41,11 @@ class Cindex {
         case 'AlterarMatriz':
         $pagina = new Cmatriz();
         $pagina->alterarmatriz($id);    
+	break;
+    
+        case 'AtualizarMatriz':
+        $pagina = new Cmatriz();
+        $pagina->atualizamatriz($dados,$id);    
 	break;
     
         case 'InserirMatriz':
@@ -57,6 +68,30 @@ class Cindex {
         $pagina->inserirdisciplina($dados);    
 	break;
     
+        case 'CadastrarUsuario':
+        $pagina = new Cusuario();
+        $pagina->cadastrarusuario();     
+	break;
+    
+        case 'InserirUsuario':
+        $pagina = new Cusuario();
+        $pagina->inserirusuario($dados);     
+	break;
+    
+        case 'ListarCurso':
+        $pagina = new Ccurso();
+        $pagina->listarcurso();    
+	break;
+    
+        case 'AlterarCoordenador':
+        $pagina = new Ccurso();
+        $pagina->alterarcoordenador($id);  
+	break;
+    
+        case 'AtualizarCoordenador':
+        $pagina = new Ccurso();
+        $pagina->mudacoordenador($dados);   
+	break;
 
 	default:
 	include ("view/Home.php");
