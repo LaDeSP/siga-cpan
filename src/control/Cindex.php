@@ -68,6 +68,16 @@ class Cindex {
         $pagina->inserirdisciplina($dados);    
 	break;
     
+        case 'AlterarDisciplina':
+        $pagina = new Cdisciplina();
+        $pagina->alterardisciplina($id);  
+	break;
+    
+        case 'AtualizarDisciplina':
+        $pagina = new Cdisciplina();
+        $pagina->atualizardisciplina($dados);
+	break;
+    
         case 'CadastrarUsuario':
         $pagina = new Cusuario();
         $pagina->cadastrarusuario();     

@@ -72,8 +72,8 @@
                                         <th>Editar</th>
                                         <th>Disciplina</th>
                                         <?php
-                                         foreach ($matrizes as $ma){
-                                             echo '<tr><td>'.$ma->mat_numero.'</td><td>'.$ma->mat_ano.'</td><td>'.$ma->mat_status.'</td><td><a href=index.php?pg=AlterarMatriz&id='.$ma->id.'>Editar</a></td><td><a href=index.php?pg=ContinuarCadastrarDisciplina&id='.$ma->id.'>Inserir</a></td></tr>';
+                                         foreach ($matrizes as $ma){ 
+                                             echo '<tr><td>'.$ma->mat_numero.'</td><td>'.$ma->mat_ano.'</td><td>'.$ma->mat_status.'</td><td><a class = "btn" href=index.php?pg=AlterarMatriz&id='.$ma->id.'>Editar</a></td><td><a class = "btn" href=index.php?pg=ContinuarCadastrarDisciplina&id='.$ma->id.'>Inserir</a></td></tr>';
                                          
                                              
                                          }

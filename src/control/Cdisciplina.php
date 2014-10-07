@@ -41,5 +41,31 @@ class Cdisciplina {
         include_once 'view/CadastrarDisciplina.php';
     }
     
+    function alterardisciplina($id) {
+        $altdis = new Disciplina();
+        $consulta = $altdis->find($id);
+        include_once 'view/EditarDisciplina.php';
+        
+    }
+    
+        function atualizardisciplina($dados) {
+        $altdis = new Disciplina();
+        $altdis->setSemestre($dados['semestre']);
+        $altdis->setCodigo($dados['codigo']);
+        $altdis->setNome($dados['nome']);
+        $altdis->setAbreviacao($dados['abreviacao']);
+        $altdis->setCargaHoraria($dados['cargahoraria']);
+        $altdis->setCurso($dados['curso']);
+        $altdis->setIdMatriz($dados['idmatriz']);
+        $altdis->setTipo($dados['tipo']);
+        $altdis->setStatus($dados['status']);
+        $id = $dados['id'];
+        $altdis->update($id);
+        $error = "<p>Registro Atualizado com Sucesso</p>";
+        $url = "index.php?pg=SelecionaCurso";
+        include_once 'view/Aviso.php';
+        exit();      
+    }
+    
   
 }

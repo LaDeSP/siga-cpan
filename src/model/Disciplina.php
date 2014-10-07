@@ -102,6 +102,19 @@ class Disciplina extends Crud {
     }
 
     public function update($id) {
+        $sql = "UPDATE $this->table SET dis_semestre = :semestre, dis_codigo = :codigo, dis_nome = :nome, dis_abrev = :abreviatura, dis_carga_horaria = :cargaHoraria, dis_tipo = :tipo, dis_curso = :curso, dis_status = :status, dis_id_mat = :matriz WHERE id = :id";
+        $stmt = Db::prepare($sql);
+        $stmt->bindParam(':semestre', $this->semestre);
+        $stmt->bindParam(':codigo', $this->codigo);
+        $stmt->bindParam(':nome', $this->nome);
+        $stmt->bindParam(':abreviatura', $this->abreviacao);
+        $stmt->bindParam(':cargaHoraria', $this->cargaHoraria);
+        $stmt->bindParam(':tipo', $this->tipo);
+        $stmt->bindParam(':curso', $this->curso);
+        $stmt->bindParam(':status', $this->status);
+        $stmt->bindParam(':matriz', $this->idMatriz);
+        $stmt->bindParam(':id', $id);
+        return $stmt->execute();
         
     }
     
@@ -112,5 +125,7 @@ class Disciplina extends Crud {
         $stmt->execute();
         return $stmt->fetchAll(PDO::FETCH_CLASS);
     }
+    
+
 
 }
