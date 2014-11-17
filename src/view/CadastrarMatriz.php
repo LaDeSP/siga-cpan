@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="pt-br">
   <head>
-      <title>Seja Bem Vindo...</title>
+      <title>Cadastrar Matriz</title>
       <meta charset="UTF-8">
   	  <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <link href="css/bootstrap.css" rel="stylesheet">
@@ -73,7 +73,7 @@
                                         <th>Disciplina</th>
                                         <?php
                                          foreach ($matrizes as $ma){ 
-                                             echo '<tr><td>'.$ma->mat_numero.'</td><td>'.$ma->mat_ano.'</td><td>'.$ma->mat_status.'</td><td><a class = "btn" href=index.php?pg=AlterarMatriz&id='.$ma->id.'>Editar</a></td><td><a class = "btn" href=index.php?pg=ContinuarCadastrarDisciplina&id='.$ma->id.'>Inserir</a></td></tr>';
+                                             echo '<tr><td><a href="index.php?pg=ListarMatriz&id='.$ma->id.'">'.$ma->mat_numero.'</a></td><td>'.$ma->mat_ano.'</td><td>'.$ma->mat_status.'</td><td><a class = "btn" href=index.php?pg=AlterarMatriz&id='.$ma->id.'>Editar</a></td><td><a class = "btn" href=index.php?pg=ContinuarCadastrarDisciplina&id='.$ma->id.'>Inserir</a></td></tr>';
                                          
                                              
                                          }

@@ -1,10 +1,10 @@
 <?php
 
-include_once 'db/Db.php';
+include_once 'banco/Db.php';
 
 class Logar extends Db {
     // nome da tabela que vai realizar a consulta no banco de dados
-    private $tabela = "funcionario";
+    private $tabela = "usuario";
     private $login;
     private $senha;
 
@@ -29,7 +29,7 @@ class Logar extends Db {
         
     function valida() {
         
-        $sql  = "SELECT * FROM $this->tabela WHERE fun_email = :login AND fun_senha = :senha";
+        $sql  = "SELECT * FROM $this->tabela WHERE usu_email = :login AND usu_senha = :senha";
         $stmt = Db::prepare($sql);
         $stmt->bindParam(':login',  $this->login);
         $stmt->bindParam(':senha', $this->senha);
@@ -38,16 +38,12 @@ class Logar extends Db {
         $total = count($confere);
  
         if($total > 0){
-            $sql  = "SELECT * FROM cargo WHERE id = :idCar";
-            $stm = Db::prepare($sql);
-            $stm->bindParam(':idCar',$confere[0]['fun_car_id']);
-            $stm->execute();
-            $con = $stm->fetchAll(PDO::FETCH_ASSOC);
+
             session_start();
-            $_SESSION['idFun'] = $confere[0]['id'];
-            $_SESSION['login'] = $confere[0]['fun_email'];
-            $_SESSION['senha'] = $confere[0]['fun_senha'];
-            $_SESSION['cargo'] = $con[0]['car_nome'];
+            $_SESSION['idUsu'] = $confere[0]['id'];
+            $_SESSION['login'] = $confere[0]['usu_email'];
+            $_SESSION['senha'] = $confere[0]['usu_senha'];
+            $_SESSION['nivel'] = $confere[0]['usu_nivel'];
             
             // redirecionamento da pagina caso o login seja efetuado com sucesso.
             header("Location:index.php?pg=Validado"); 
@@ -62,12 +58,12 @@ class Logar extends Db {
     }
     
     function buscasenha($email) {
-        $sql  = "SELECT * FROM $this->tabela WHERE fun_email = :login";
+        $sql  = "SELECT * FROM $this->tabela WHERE usu_email = :login";
         $stmt = Db::prepare($sql);
         $stmt->bindParam(':login', $email);
         $stmt->execute();
         $confere = $stmt->fetchAll(PDO::FETCH_ASSOC);
-            echo '<a href=index.php?pg=LinkSenha&id='.$confere[0]['id'].'-'.$confere[0]['fun_senha'].'>Recuperar Senha</a>';
+            echo '<a href=index.php?pg=LinkSenha&id='.$confere[0]['id'].'-'.$confere[0]['usu_senha'].'>Recuperar Senha</a>';
         
         
         /*
@@ -106,7 +102,7 @@ class Logar extends Db {
     }
     
     function atualizasenha($id,$senha) {
-        $sql = "UPDATE $this->tabela SET fun_senha = :novaSenha WHERE id = :id";
+        $sql = "UPDATE $this->tabela SET usu_senha = :novaSenha WHERE id = :id";
         $stmt = Db::prepare($sql);
         $stmt->bindParam(':novaSenha',md5($senha));
         $stmt->bindParam(':id', $id);
@@ -115,7 +111,7 @@ class Logar extends Db {
     }
     
     function verificalogin($id,$senha) {
-        $sql  = "SELECT * FROM $this->tabela WHERE id = :id AND fun_senha = :senha";
+        $sql  = "SELECT * FROM $this->tabela WHERE id = :id AND usu_senha = :senha";
         $stmt = Db::prepare($sql);
         $stmt->bindParam(':id',  $id);
         $stmt->bindParam(':senha', $senha);
@@ -132,7 +128,7 @@ class Logar extends Db {
         }
         
     }
-    function liberaacesso($id,$nivel,$cargo) {
+    function liberaacesso($id,$nivel) {
       
        
         $sql  = "SELECT * FROM $this->tabela WHERE id= :id";
@@ -142,26 +138,18 @@ class Logar extends Db {
         $usuario = $stmt->fetchAll(PDO::FETCH_ASSOC);
         $total = count($usuario);
         if($total > 0){
-                $car = $usuario[0]['fun_car_id'];
-                $sql  = "SELECT * FROM cargo WHERE id= :cargo";
-                $stm = Db::prepare($sql);
-                $stm->bindParam(':cargo', $car, PDO::PARAM_INT);
-                $stm->execute();
-                $c = $stm->fetchAll(PDO::FETCH_ASSOC);
-                $ca = $c[0]['car_nome'];
-                $niv= $c[0]['car_nivel'];
+                $niv = $usuario[0]['usu_nivel'];
                 foreach ($nivel as $valor) {
-                       if(($niv==$valor) AND (strcmp($ca,$cargo)==0)){
+                       if($niv==$valor){
                             
                             return;                     
-                        }else{
-                            session_destroy();
-                            $error = "Acesso Negado.";
-                            $url = "index.php?pg=Logar";
-                            include_once 'view/Aviso.php';
-                            exit();
                         }
                 }
+                session_destroy();
+                $error = "Acesso Negado.";
+                $url = "index.php?pg=Logar";
+                include_once 'view/Aviso.php';
+                exit();
      
         
         }else{

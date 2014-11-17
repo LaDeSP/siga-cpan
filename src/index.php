@@ -1,4 +1,7 @@
 <?php
+if(!isset($_SESSION['idFun'])){
+session_start();
+}
 
 include 'control/Cindex.php';
 $index = new Cindex();

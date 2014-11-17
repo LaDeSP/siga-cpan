@@ -41,6 +41,13 @@ class Cdisciplina {
         include_once 'view/CadastrarDisciplina.php';
     }
     
+    function listardisciplina($idMatriz) {
+        $con = new Disciplina();
+        $lista = $con->listadisciplina($idMatriz);
+        include_once 'view/ListarDisciplina.php';
+        
+    }
+    
     function alterardisciplina($id) {
         $altdis = new Disciplina();
         $consulta = $altdis->find($id);

@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="pt-br">
   <head>
-      <title>Seja Bem Vindo...</title>
+      <title>Lista de Disciplinas</title>
       <meta charset="UTF-8">
   	  <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <link href="css/bootstrap.css" rel="stylesheet">
@@ -25,8 +25,30 @@
             <div class="row-fluid">
                     <div id="conteudo">
                             <div class="span12">
-                                <p>Seja bem vindo <?php echo $_SESSION['idUsu']; ?></p>
-                                <p>Você tem nivel de acesso: <?php echo $_SESSION['nivel']; ?></p>    
+                                
+                                <table class="table">
+                                    <tr>
+                                        <th>Semestre</th>
+                                        <th>Codigo</th>
+                                        <th>Nome</th>
+                                        <th>Tipo</th>
+                                        <th>Editar</th>
+                                    </tr>
+                                    <?php
+                                     foreach ($lista as $dis) {
+                                        echo '
+                                    <tr>
+                                        <td>'.$dis->dis_semestre.'</td>
+                                        <td>'.$dis->dis_codigo.'</td>
+                                        <td>'.$dis->dis_nome.'</td>
+                                        <td>'.$dis->dis_tipo.'</td>
+                                        <td><a class = "btn" href="index.php?pg=AlterarDisciplina&id='.$dis->id.'">Editar</a></td>
+                                    </tr>';
+                                     }
+                                    ?>
+                                    
+                                </table>
+                                    
                             </div>
                     </div>
             </div>

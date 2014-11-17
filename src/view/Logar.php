@@ -15,7 +15,7 @@
     </head>
     <body>
        <div class="container">
-           <?php include "topo.html"; ?>
+           <?php include "topo.php"; ?>
           
            
            <!------------------------------------------Inicio do Conteudo------------------------------------->
@@ -28,6 +28,7 @@
 						</div>
 						<div class="bordas">
                                                     <div>
+                                                        </br></br>
                                                             <form class="form-horizontal" method="POST" action="index.php?pg=ValidarLogin" >
                                                                 <fieldset>
 
@@ -72,7 +73,7 @@
 		</section><!-- ----------------------------------------fim do Conteudo----------------------------------- -->
 
            
-           <?php include "rodape.html"; ?>
+           <?php include "rodape.php"; ?>
            
            
        </div><!-- fim da div container -->    

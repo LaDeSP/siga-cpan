@@ -81,7 +81,7 @@ class Curso extends Crud {
     }
     
     public function buscacurso() {
-        $sql = "SELECT curso.cur_codigo, curso.cur_nome, usuario.usu_nome, curso.id  FROM curso INNER JOIN usuario ON usuario.id = curso.cur_coordenador";
+        $sql = "SELECT curso.cur_codigo, curso.cur_nome, curso.id  FROM curso";
         $stmt = Db::prepare($sql);
         $stmt->execute();
         return $stmt->fetchAll(PDO::FETCH_CLASS);

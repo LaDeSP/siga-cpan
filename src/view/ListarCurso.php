@@ -30,17 +30,16 @@
                                     <tr>
                                         <th>Codigo</th>
                                         <th>Nome</th>
-                                        <th>Coordenador</th>
                                         <th>Editar</th>
                                     </tr>
                                     
                                         <?php 
+                                       
                                         foreach ($cursos as $da){
                                             echo '
                                       <tr>          
                                         <td>'.$da->cur_codigo.'</td>
-                                        <td>'.$da->cur_nome.'</td>
-                                        <td>'.$da->usu_nome.'</td>    
+                                        <td>'.$da->cur_nome.'</td>    
                                         <td><a class = "btn btn-inverse" href="index.php?pg=AlterarCoordenador&id='.$da->id.'">Editar</a></td>
                                       </tr>';
                                         }

@@ -13,9 +13,7 @@
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">Professor<b class="caret"></b></a>
                                 <ul class="dropdown-menu">
-                                    <li><a href="?pg=indisponibilidade">Cadastrar Indisponibilidade</a></li>
-                                    <li><a href="#">Editar</a></li> 
-                                    <li><a href="#">Visualizar</a></li> 
+                                    <li><a href="?pg=CadastrarDisponibilidade">Cadastrar/Editar Indisponibilidade</a></li>
                                 </ul>
                             </li>
                             
@@ -45,9 +43,8 @@
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">Sala<b class="caret"></b></a>
                                 <ul class="dropdown-menu">
-                                  <li><a href="?pg=cad_sala">Cadastrar</a></li>
-                                  <li><a href="?pg=listar_sala">Editar/Excluir</a></li> 
-                               </ul>
+                                  <li><a href="?pg=CadastrarSala">Cadastrar/Editar</a></li>
+                                </ul>
                             </li>            
 
                             <li class="dropdown">
@@ -60,8 +57,8 @@
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">Minha Conta<b class="caret"></b></a>
                                 <ul class="dropdown-menu">
-                                  <li><a href="?pg=cad_usuario">Atalizar Dados</a></li>
-                                  <li><a href="?pg=cad_usuario">Trocar Senha</a></li>
+                                  <li><a href="?pg=EditarDados">Atualizar Dados</a></li>
+                                  <li><a href="?pg=EditarSenha">Trocar Senha</a></li>
                                 </ul>
                             </li>    
 
@@ -72,7 +69,7 @@
                                 </ul>
                             </li>    
 
-                            <li><a href="?pg=logout">Sair</a></li>
+                            <li><a href="?pg=Sair">Sair</a></li>
            
                         </ul>
                         

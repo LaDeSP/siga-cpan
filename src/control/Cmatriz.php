@@ -4,6 +4,9 @@ include_once 'control/Cdisciplina.php';
 class Cmatriz {
     
     function cadastrarmatriz($dados) {
+        if(!isset($dados['curso'])){
+            header('Location: index.php?pg=SelecionaCurso');
+        }
         $curso = $dados['curso'];
         $consulta = new Matriz();
         $matrizes = $consulta->selecionamatriz($curso);

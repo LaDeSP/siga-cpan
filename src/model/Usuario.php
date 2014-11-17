@@ -65,4 +65,34 @@ class Usuario extends Crud {
         
     }
     
+    public function updateuser($id) {
+        $sql = "UPDATE $this->table SET usu_nome = :nome, usu_email = :email, usu_siape = :siape WHERE id = :id";
+        $stmt = Db::prepare($sql);
+        $stmt->bindParam(':nome', $this->nome);
+        $stmt->bindParam(':email', $this->email);
+        $stmt->bindParam(':siape', $this->siape);
+        $stmt->bindParam(':id', $id);
+        return $stmt->execute();
+        
+    }
+    
+    public function verificasenha($iduser, $senha) {
+        $sql = "SELECT * FROM $this->table WHERE id = :id AND usu_senha = :senha";
+        $stmt = Db::prepare($sql);
+        $stmt->bindParam(':id', $id);
+        $stmt->bindParam(':senha', $senha);
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_CLASS);
+    }
+    
+    public function updatesenhauser($id) {
+        $sql = "UPDATE $this->table SET  usu_senha = :senha WHERE id = :id";
+        $stmt = Db::prepare($sql);
+        $stmt->bindParam(':senha', $this->senha);
+        $stmt->bindParam(':id', $id);
+        return $stmt->execute(); 
+    }
+    
+
+    
 }

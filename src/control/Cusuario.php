@@ -52,4 +52,52 @@ class Cusuario {
         exit();
         
     }
+    
+    function editardadosuser() {
+        $consulta = new Usuario();
+        $valor = $consulta->find($_SESSION['idUsu']);
+        
+        include_once 'view/EditarDados.php';     
+    }
+    
+    function atualizardadosuser($dados) {
+        $up = new Usuario();
+        $up->setNome($dados['nome']);
+        $up->setEmail($dados['email']);
+        $up->setSiape($dados['siape']);
+        $up->updateuser($dados['id']);
+        $error = "Cadastro Atualizada com Sucesso.";
+        $url = "index.php";
+        include_once 'view/Aviso.php';
+        exit();
+        
+    }
+    
+    function editarsenhauser() {
+        
+        include_once 'view/NovaSenha.php';
+        
+    }
+    
+    function atualizarsenhauser($dados) {
+        $atualiza = new Usuario();
+        $valor = $atualiza->verificasenha($dados['idusuario'], md5($dados['senhaatual']));
+        $total = count($valor);
+        if($total = 1){
+            $atualiza->setSenha(MD5($dados['novasenha']));
+            $atualiza->updatesenhauser($dados['idusuario']);
+            $error = "Senha Atualizada com Sucesso.";
+            $url = "index.php?pg=Sair";
+            include_once 'view/Aviso.php';
+            exit();
+        } else {        
+            $error = "Algo deu errado tente novamente...";
+            $url = "index.php";
+            include_once 'view/Aviso.php';
+            exit(); 
+            
+        }
+        
+        
+    }
 }

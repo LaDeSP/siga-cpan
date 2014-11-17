@@ -42,10 +42,9 @@ class Clogar {
     }
     }
     
-    function validacao($id, $nivel, $cargo) {
+    function validacao($id, $nivel) {
         $valida = new Logar();
-
-        $valida->liberaacesso($id,$nivel,$cargo);
+        $valida->liberaacesso($id,$nivel);
 
         
     }
